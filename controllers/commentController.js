@@ -1,7 +1,6 @@
 import Comment from '../models/Comment.js';
 import Blog from '../models/Blog.js';
 import { validationResult } from 'express-validator';
-import { io } from '../server.js';
 
 export const addComment = async (req, res) => {
     try {
@@ -70,7 +69,7 @@ export const addComment = async (req, res) => {
 
         const populatedComment = await comment.populate('user', 'name email');
 
-        io.to(blogId).emit('updateComments', populatedComment);
+        req.app.get('io').to(blogId).emit('updateComments', populatedComment);
 
         res.status(201).json(populatedComment);
     } catch (error) {
