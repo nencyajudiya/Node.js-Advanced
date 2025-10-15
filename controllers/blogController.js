@@ -15,13 +15,6 @@ const storage = multer.diskStorage({
 });
 export const upload = multer({ storage });
 
-const getUploadedImageUrl = (req) => {
-    if (req.file) {
-        return `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
-    }
-    return '';
-};
-
 export const createBlog = async (req, res) => {
     console.log("req.body:", req.body);
     console.log("req.file:", req.file);
