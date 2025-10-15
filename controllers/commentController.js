@@ -14,12 +14,6 @@ export const addComment = async (req, res) => {
             });
         }
 
-        console.log("req.body:", req.body);
-        console.log("req.query:", req.query);
-        console.log("req.params:", req.params);
-        console.log("req.file:", req.file);
-        console.log("req.user:", req.user ? req.user._id : 'No user');
-
         const data = { ...req.body, ...req.query, ...req.params };
         console.log("Combined data:", data);
 

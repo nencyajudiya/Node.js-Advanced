@@ -1,5 +1,4 @@
 import Blog from '../models/Blog.js';
-import { validationResult } from 'express-validator';
 import path from 'path';
 import fs from 'fs';
 import multer from 'multer';
@@ -49,9 +48,6 @@ export const createBlog = async (req, res) => {
     res.status(201).json(blog);
 };
 
-
-
-
 export const updateBlog = async (req, res) => {
     try {
 
@@ -88,6 +84,7 @@ export const updateBlog = async (req, res) => {
         res.status(500).json({ message: "Server error", error: err.message });
     }
 };
+
 export const deleteBlog = async (req, res) => {
     try {
         const blog = await Blog.findById(req.params.id);
@@ -119,7 +116,6 @@ export const deleteBlog = async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 };
-
 
 export const getAllBlogs = async (req, res) => {
     try {
